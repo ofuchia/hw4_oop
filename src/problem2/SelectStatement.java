@@ -74,3 +74,4 @@ public class SelectStatement {
     //System.out.println(this); //must override toString so we actually get what we want printed out. why is println an error?
 
 }
+
