@@ -1,8 +1,6 @@
 package problem3;
 
-package problem3;
-
-public class OneCoinState implements VendingState {
+public class OneCoinState extends AbstractState {
 
     private static final OneCoinState instance = new OneCoinState();
     private OneCoinState(){}
@@ -11,33 +9,34 @@ public class OneCoinState implements VendingState {
     public static OneCoinState getInstance(){
         return instance;
     }
-    //getting the stateName
-    public State getName(){return State.CONTAINSONECOINSTATE;}
-
 
     //overriding the transitions
     @Override
-    public void insertCoin(VendingStateMachine vendingMachine) {
+    public void insertCoin(VendingStateMachine stateMachine) {
         //if there are zero bars, set it to the no chocolate bar state
-        if(VendingStateMachine.getNumberofBars() == 0){
-            stateMachine.setCurrentState(NoChocoState.getInstance());
+        if(stateMachine.getNumberofBars() == 0){
+            System.out.println("ONE STATE Sorry, we are out...");
+            return;
         }
-        //
-        //updating the state
-        vendingMachine.setCurrentState(OneCoinState.getInstance()); //inserting one coin where there were none moves us to this state.
-        //update the coin coin
+        //adding another coin takes us to two coin state.
+        if(stateMachine.getNumberCoins()==1){
+            System.out.println("Two coins inserted...please press Buy button...");
+            stateMachine.setCurrentState(TwoCoinState.getInstance());
+            return;
+        }
+        //otherwise, increase the coin count and move the states
+        System.out.println("One coin inserted...");
+        stateMachine.setNumberCoins(1);
+        stateMachine.setCurrentState(TwoCoinState.getInstance());
     }
 
     @Override
     public void pressButton(VendingStateMachine stateMachine) {
-        //something happens
-        //updating candy bar count
-        //saying out of bars
-        //decreasing coin count
+        //lacking one coin
+        System.out.println("Please insert one more coin...");
     }
 
-    @Override
     public void refill(VendingStateMachine stateMachine) {
-        //something happens.
+        //not a valid transition. Delete after confirming with testing.
     }
 }

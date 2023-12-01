@@ -11,47 +11,52 @@ public class VendingStateMachine {
     private int numberOfCoins;
     private VendingState currentState; //not VendingStateMachine
 
-    //constructor
+    //constructor; creating a Vending machine object
     public VendingStateMachine(int numberOfBars) {
         //initializing the vending machine
         this.numberOfBars = numberOfBars;
         this.currentState = NoCoinState.getInstance();
+        numberOfCoins = 0;
     }
 
-    //increasing number of coins
-    void insertCoin(int coins){
-        numberOfCoins += coins;
-        //does this move states?
+    //because each state has its own way of implementing this method, we will delegate it to them.
+    void insertCoin(){
+        this.currentState.insertCoin(this);
     }
 
-    void refill(int i){
-        numberOfBars = i;
-        //why does this move states?
-        currentState = NoCoinState.getInstance();
-
-
+    void refill(int numofBars){
+        this.currentState.refill(this, numofBars);
     }
 
     void pressButton(){
-        numberOfBars--;     //decrease number of candy bars
-        numberOfCoins -=2; //decrememnt it by 2
-
+        this.currentState.pressButton(this);
     }
+
+
+    //do i need setters and getters here?
+    //yes so you can update coins and bars
+    //private fields need setters and getters.
 
     //getters
     int getNumberofBars(){
-       return numberOfBars;
-
+        return numberOfBars;
     }
 
-    void getNumberCoins(){
-
+    int getNumberCoins(){
+        return numberOfCoins;
     }
 
-    //setters
-//   this is done with refilling isnt it??  void setNumberOfBars(int newBars){
+    void setNumberofBars(int newBars){
+        this.numberOfBars = newBars;
+    }
+
+    void setNumberCoins(int coins){
+        this.numberOfCoins = coins;
+    }
+
+    void setCurrentState(VendingState newState){
+        this.currentState = newState;
+    }
+
 
 }
-
-
-    //getters and settersr to se

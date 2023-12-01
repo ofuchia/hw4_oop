@@ -1,31 +1,29 @@
 package problem3;
 
-public class NoChocoState implements VendingState{
+public class NoChocoState extends AbstractState {
 
     private static final NoChocoState instance = new NoChocoState();
+
+    //constructor
     private NoChocoState(){}
 
-    //getting the instance of our state.
+    //getting the instance of our this state.
     public static NoChocoState getInstance(){
         return instance;
     }
-    public State getName(){return State.NOCHOCOBARSTATE;}
 
-    @Override
-    public void insertCoin(VendingStateMachine vendingMachine) { //should i take in an int too?
-        vendingMachine.setCurrentState(NoChocoState.getInstance()); //inserting one coin where there were none moves us to this state.
+    public void pressButton(VendingStateMachine stateMachine){
+        System.out.println("Sorry, WE ARE OUT.");
+    }
+    public void refill(VendingStateMachine stateMachine, int newBars) {
+        //update bar count
+        stateMachine.setNumberofBars(newBars);
+        //update state
+        stateMachine.setCurrentState(NoCoinState.getInstance());
     }
 
     @Override
-    public void pressButton(VendingStateMachine stateMachine) {
-        //something happens
-
+    public void insertCoin(VendingStateMachine stateMachine) {
+        System.out.println("Sorry, we are OUTTT.");
     }
-
-    @Override
-    public void refill(VendingStateMachine stateMachine) {
-        //something happens.
-    }
-
-
 }
