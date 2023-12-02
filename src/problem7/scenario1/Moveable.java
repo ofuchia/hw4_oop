@@ -1,4 +1,4 @@
-package problem7;
+package problem7.scenario1;
 
 public interface Moveable {
 

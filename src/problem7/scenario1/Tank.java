@@ -1,8 +1,11 @@
-package problem7;
+package problem7.scenario1;
+
+import problem7.scenario1.Moveable;
+import problem7.scenario1.TankProxy;
 
 import java.util.Random;
 
-public class Tank implements Moveable{
+public class Tank implements Moveable {
     @Override
     public void move() {
         //start time
@@ -17,8 +20,10 @@ public class Tank implements Moveable{
     }
 
 
+    //testing
+
     public static void main(String[] args) {
-        Moveable tankProxyObj = new TankProxy();    //program to interface??
+        TankProxy tankProxyObj = new TankProxy();
 
         tankProxyObj.move();
     }

@@ -1,7 +1,7 @@
-package problem7;
+package problem7.scenario1;
 
-public class TankProxy implements Moveable{
-    private Moveable aTank = new Tank();
+public class TankProxy implements Moveable {
+    private Tank aTank = new Tank();
 
 
     @Override
