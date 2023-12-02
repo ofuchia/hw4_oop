@@ -14,6 +14,7 @@ public class TestFormatter {
 
 		//creating an obj of the CSVFormatter class
 		CSVTextFormatter csvObject = new CSVTextFormatter();
+		//updating the formatter variable
 		formatter = new CSVTextFormatterAdaptor(csvObject);
 
 
