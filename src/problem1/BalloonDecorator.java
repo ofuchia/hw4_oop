@@ -1,16 +1,16 @@
 package problem1;
 
-public class BalloonDecorator extends FlowerBouquet{
+public class BalloonDecorator extends BouquetDecorator{
 
-    double cost = 7;
-    String description = "Balloon";
-
-    protected volatile FlowerBouquet aBouquet;
-    protected BalloonDecorator(FlowerBouquet aBouquet){
-        this.aBouquet = aBouquet;
+    public BalloonDecorator(FlowerBouquet bouquet){
+        this.bouquet = bouquet;
     }
+
     public String getDescription() {
-        return this.description; //or should this be aBouquet?
+        return bouquet.getDescription() + " Balloon ...";
+    }
+    public double getCost(){
+        return bouquet.getCost() + 7.00;
     }
 
 }
