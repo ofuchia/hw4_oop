@@ -16,16 +16,17 @@ public class TestShoppingCart {
 
 
         // end of your code
-        shoppingCart.checkout();
+        shoppingCart.checkout(); //to run the actual discount method
 
         // write your code here for strategy 2
 
+        shoppingCart.setStrategy(new RefundStrategy());
 
         // end of your code
         shoppingCart.checkout();
 
         // write your code here for strategy 3
-
+        shoppingCart.setStrategy(new EchoStrategy());
 
         // end of your code
         shoppingCart.checkout();

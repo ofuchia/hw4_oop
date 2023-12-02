@@ -1,4 +1,6 @@
 package problem2;
+import org.apache.commons.lang3.StringUtils;
+
 public class SelectStatement {
     //i think all of them must be here bc that's what the paper says. also we must define something if it'll be instantiated later, me thinks
     //instance variables
@@ -21,9 +23,16 @@ public class SelectStatement {
 
 
 
-    //inner Builder class..repeats outer class's instance variables? yes bc we have to match builder with outer class's?
+    //inner Builder class
     public static class Builder {
-        //set constant defaults, if any
+        //set constant defaults, so we only have to check for nulls?
+//        private static final String DEFAULT_SELECT = "";
+//        private static final String DEFAULT_FROM = "";
+//        private static final String DEFAULT_WHERE = "";
+//        private static final String DEFAULT_GROUPBY = "";
+//        private static final String DEFAULT_HAVING = "";
+//        private static final String DEFAULT_ORDERBY = "";
+
         //inner class's instance variables
         private String select;
         private String from;
@@ -33,37 +42,48 @@ public class SelectStatement {
         private String order_by;
 
         public SelectStatement build() {
-            //use if statements for validation purposes
-            if (select == null) {
+            //validation statements
+            if (StringUtils.isBlank(select)) {
                 throw new IllegalArgumentException("MUST have a SELECT statement.");
             }
-            if (from == null) {
-                throw new IllegalArgumentException("MUST have a SELECT statement.");
+            if (StringUtils.isBlank(from)) {
+                throw new IllegalArgumentException("MUST have a FROM statement.");
             }
-            if (select == null && from != null) {
-                throw new IllegalArgumentException("MUST have a SELECT statement to use FROM statement.");
-            }
+            //how do i check for GROUP BY and HAVING and WHERE?
+
             //if everything is okay, build this instance of SelectStatement
             return new SelectStatement(this);
         }
 
         //need SETTERS to assign values lol duh, how else were we gonna do it??
         public Builder setSelect(String select) {
-            if (select == null || select.isEmpty()) {
-                throw new IllegalArgumentException("MUST input something for SELECT");
+            if (StringUtils.isBlank(select)) {
+                throw new IllegalArgumentException("Must have SELECT statement");
             }
-            //this is why chaining is able to work, right? bc each setter is returning "this"
             this.select = select;
             return this;
         }
-        public Builder setFrom(String from){
-            //we have something under the FROM but nothing for SELECT
-            if(from != null && !from.isEmpty() && (select.isEmpty() || select == null)) {
-                throw new IllegalArgumentException("MUST input something for SELECT if using FROM");
+
+        public Builder setFrom(String from) {
+            if (StringUtils.isBlank(select)) {
+                throw new IllegalArgumentException("Must have FROM statement.");
             }
             this.from = from;
             return this;
         }
+        //question. We can have this one so long as the others are valid.
+        // do I need to check for both Select and From or just from?
+        // how do the previous validations come into play?
+
+        //what if they don't have a where statement? how do I allow them that?
+        public Builder setWhere(String where) {
+            if (StringUtils.isBlank(select) || StringUtils.isBlank(from)) {
+                throw new IllegalArgumentException("Must have SELEct and FROM statements.");
+            }
+            this.where = where;
+            return this;
+        }
+
 
     }
 

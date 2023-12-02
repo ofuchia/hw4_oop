@@ -16,9 +16,9 @@ public class TenOffStrategy implements DiscountStrategy{
            counter++;
        }
        //calculate 10% off
-        double saved = totalCost - (totalCost * 0.10);
-
-        System.out.println("Total: " + saved);
+        double finalCost = totalCost - (totalCost * 0.10);
+        //print final result
+        System.out.println(finalCost);
        }
 
 
