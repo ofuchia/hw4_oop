@@ -15,7 +15,7 @@ public class OneCoinState extends AbstractState {
     public void insertCoin(VendingStateMachine stateMachine) {
         //if there are zero bars, set it to the no chocolate bar state
         if(stateMachine.getNumberofBars() == 0){
-            System.out.println("ONE STATE Sorry, we are out...");
+            System.out.println("Sorry, we are out...");
             return;
         }
         //adding another coin takes us to two coin state.

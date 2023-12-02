@@ -5,12 +5,21 @@ import java.util.List;
 
 public class ShoppingCart {
     private List<CartItem> items = new ArrayList<>();
+    DiscountStrategy strategy;
 
-    public ShoppingCart(List<CartItem> items) {
+    //constructor to allow context to accept strategy
+    public ShoppingCart(List<CartItem> items, DiscountStrategy strategy) {
         this.items = items;
+        this.strategy = strategy;
+    }
+
+
+
+    public void setStrategy(DiscountStrategy newStrategy){
+        this.strategy = newStrategy;
     }
 
     public void checkout() {
-
+        strategy.applyDiscount(this);
     }
 }

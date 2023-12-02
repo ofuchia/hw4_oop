@@ -14,7 +14,7 @@ public class NoCoinState extends AbstractState { //extending here instead of Ven
     @Override
     public void insertCoin(VendingStateMachine stateMachine) {
         if(stateMachine.getNumberofBars() ==0){
-            System.out.println("NO COIN Sorry, we are out...");
+            System.out.println("Sorry, we are out...");
             return;
         }
         //use setter to update the private field that is coin count

@@ -17,20 +17,21 @@ public class TwoCoinState extends AbstractState{
     public void pressButton(VendingStateMachine stateMachine) { //problem is here.
         //check has to happen after dispensing, because we will never be at TwoCoin and without bars.
 
-        //bars and decrement coin and bar count bc everythings all good.
+        //bars and decrement coin and bar count bc everything's all good.
         System.out.println("Buy button pressed...start dispensing");
         stateMachine.setNumberofBars(stateMachine.getNumberofBars()-1);
+        stateMachine.setNumberCoins(0);
         stateMachine.setCurrentState(NoCoinState.getInstance());
-        //do i return here?
 
-        //need to check on bars to figure out where to go next. ..but autp dispensing a bar means we're in a no coin state.
+
+        //need to check on bars to figure out where to go next.
         if(stateMachine.getNumberofBars() == 0){
-            System.out.println(" TWO STATE Sorry, we are out...");
+            //there's no need to print here.
+            //System.out.println(" TWO STATE Sorry, we are out...");
             stateMachine.setCurrentState(NoChocoState.getInstance());
-            return;
         }
 
-        stateMachine.setCurrentState(NoCoinState.getInstance());
+
 
     }
 
