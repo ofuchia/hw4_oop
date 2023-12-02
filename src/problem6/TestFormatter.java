@@ -12,6 +12,13 @@ public class TestFormatter {
 
 		// now switch to the vender's comma formatter
 
+		//creating an obj of the CSVFormatter class
+		CSVTextFormatter csvObject = new CSVTextFormatter();
+		formatter = new CSVTextFormatterAdaptor(csvObject);
+
+
+
+
 		// end of your code
 		System.out.println(formatter.formatText("Bing.is.a.good.man.")); // this line should print comma separated text
 
