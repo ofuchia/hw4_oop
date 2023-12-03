@@ -23,8 +23,7 @@ public class Tank implements Moveable {
     //testing
 
     public static void main(String[] args) {
-        Moveable tankProxyObj = new TankProxy();        //programming to an interface means the interface is the Type
-
+        TankProxy tankProxyObj = new TankProxy();
         tankProxyObj.move();
     }
 }
