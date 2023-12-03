@@ -1,8 +1,6 @@
 package problem8;
-import java.io.File;
 
 public class ConcurrentExternalStrategy implements SortStrategy{
-    File file;
 
     @Override
     public void sortFile(String filePath) {

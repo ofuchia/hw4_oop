@@ -1,11 +1,8 @@
 package problem8;
 
-import java.io.File;
 
 public class ExternalSortStrategy implements SortStrategy{
 
-    //taking in a file object
-    File file;
 
     //if (fileSize < 10 * GB)
     @Override
